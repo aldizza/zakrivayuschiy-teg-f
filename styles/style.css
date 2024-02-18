@@ -18,7 +18,7 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--font-main, 'Inter-Variable', serif);
-  font-variation-settings: var(--wdth-main-card);
+  font-variation-settings: 'wght' var(--wdth-main-card);
   color: var(--main-color);
   background: var(--background-image);
   background-size: cover;
@@ -170,7 +170,7 @@
   padding: 23px 13px;
   font-family: var(--font-accent);
   color: var(--main-color);
-  font-weight: 400;
+  font-variation-settings: 'wght' var(--wdth-main-card);
   font-size: 14px;
   line-height: 14px;
   opacity: 50%;
@@ -188,7 +188,7 @@
     -webkit-text-stroke: 1px var(--backgroud-color);
     text-stroke: 1px var(--backgroud-color);
   }
-} 
+}
 
 .section__content {
   padding: 22px 20px 18px 26px;
@@ -302,7 +302,7 @@
   position: relative;
   color: var(--button-text-color);
   margin-top: 5px;
-  mix-blend-mode: difference; 
+  mix-blend-mode: difference;
 }
 
 /*диалог*/
