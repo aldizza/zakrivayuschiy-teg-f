@@ -126,11 +126,6 @@
   transform: scaleX(1);
 }
 
-.button:focus-visible {
-  box-shadow: 2px 2px var(--themes-main-color);
-  outline: none;
-}
-
 .content {
   background-color: var(--backgroud-color);
   background: var(--background-image);
