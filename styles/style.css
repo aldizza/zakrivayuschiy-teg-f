@@ -127,7 +127,7 @@
   margin: 50px auto;
 }
 
-.cards {
+.cards:not(:last-child) {
   padding-bottom: 50px;
 }
 
@@ -186,7 +186,7 @@
   font-size: 18px;
   line-height: 21px; 
   padding-top: 25px;
-  padding-bottom: 23px; 
+  padding-bottom: 24px; 
   border: 2px solid var(--main-color);
   background: var(--backgroud-color);
 }
@@ -230,20 +230,13 @@
 } 
 
 .card__icon-button {
-  display: flex;
   border: 2px solid transparent;
   background: var(--backgroud-color);
   cursor: pointer;
   padding: 0;
   height: 38px;
-  width: 38px;
-  justify-content: center;
+  width: 42px;
 }
-
-.card__icon-button :focus-visible  {
-  border: 2px solid var(--main-color);
-  outline: none;
-} 
 
 .button__text {
   display:flex;
@@ -288,7 +281,8 @@
 .footer {
   display: flex;
   justify-content: center;
-  margin-top: -9px;
+  margin-top: -10px;
+  margin-bottom: 73px;
 }
 
 .footer-button {
@@ -423,15 +417,17 @@
 
   .pic__images {
     height: 696px;
-
   }
 
   .footer-button {
     display: flex;
     flex-direction: row;
-    height: 51px;
-    margin-left: 5px;
-    padding-left: 10px;
+    height: 55px;
+  }
+
+  .card__save-button {
+    width: 21px;
+    height: 21px;
   }
 
   .dialog {
