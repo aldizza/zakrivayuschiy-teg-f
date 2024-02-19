@@ -17,12 +17,13 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--font-main, 'Inter-Variable', serif);
+  font-family: var(--font-main, serif);
   font-variation-settings: 'wght' var(--wdth-main-card);
   color: var(--main-color);
   background: var(--background-image);
   background-size: cover;
   width: 100%;
+  background-attachment: fixed;
 }
 
 .header {
@@ -37,13 +38,6 @@
   background-color: var(--backgroud-color);
   min-height: 325px;
   margin: 100px auto;
-}
-
-.header__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
 }
 
 .header__title {
@@ -99,6 +93,7 @@
 .theme-menu__button:disabled::before {
   content: "▶";
   position: absolute;
+  top: 0;
   left: -12px;
   animation: arrow-animation 0.5s ease-in-out infinite alternate;
 }
@@ -128,37 +123,38 @@
 
 .content {
   background-color: var(--backgroud-color);
-  background: var(--background-image);
+  background: transparent;
   margin: 50px auto;
 }
 
 .cards {
-  background-color: var(--backgroud-color);
+  padding-bottom: 50px;
 }
 
-.section__title {
+.article__title {
   font-size: 18px;
-  padding: 3px 10px;
+  padding: 4px 10px 4px;
   border: 2px solid var(--main-color);
   border-bottom: none;
+  line-height: 21.78px;
+  font-family: var(--font-main);
+  background: var(--backgroud-color);
 }
 
-.pic_hand,
-.pic_stone,
-.pic_head,
-.pic_smile,
-.pic_hug,
-.pic_tears,
-.pic_depression,
-.pic_study {
+/*после исправления с div на figure пришлось обнулить margin*/
+figure {  
+  margin: 0;
+}
+
+.pic__images {
   display: block;
   width: 100%;
-  height: 375px;
+  height: 371px;
   object-fit: cover;
   object-position: center;
 }
 
-.section__picture {
+.article__picture {
   position: relative;
   display: flex;
   justify-content: end;
@@ -177,13 +173,11 @@
   opacity: 50%;
   text-shadow: 0 0 1px var(--backgroud-color);
   z-index: 1;
-    
+  top: 0; 
+  right: 0;
 }
 
 @supports (-webkit-text-stroke: 1px var(--backgroud-color)) or (text-stroke: 1px var(--backgroud-color)) {
-  div {
-    display: grid;
-  }
   .lable {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--backgroud-color);
@@ -191,22 +185,43 @@
   }
 }
 
-.section__content {
-  padding: 22px 20px 18px 26px;
+.article__content {
+  padding: 0 20px 0 26px;
   font-size: 18px;
   line-height: 21px; 
+  padding-top: 25px;
+  padding-bottom: 23px; 
+  border: 2px solid var(--main-color);
+  background: var(--backgroud-color);
+}
+
+.article__content-text {
   display: flex;
   flex-direction: column;
-  gap: 29px;
-  margin-bottom: 40px;
-  border: 2px solid var(--main-color);
+  gap: 28px;
 }
 
 .card__button {
   display: flex;
   justify-content: end;
-  margin-top: -26px;
+  align-items: center;
   gap: 5px;
+  margin-right: 5px;
+  margin-top: 25px;
+}
+
+.button {
+  position: relative;
+  transition: box-shadow 0.3s ease;
+  border: 2px solid var(--main-color);
+  background: var(--backgroud-color);
+  cursor: pointer;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--main-color);
+  border: 2px solid var(--main-color);
 }
 
 .card__like-button {
@@ -216,24 +231,23 @@
   cursor: pointer;
   height: 38px;
   width: 130px;
-}
-
-.button {
-  position: relative;
-  transition: box-shadow 0.3s ease;
-}
-
-.button:focus-visible {
-  box-shadow: 2px 2px var(--main-color);
-  outline: none;
-}
+} 
 
 .card__icon-button {
-  border: transparent;
+  display: flex;
+  border: 2px solid transparent;
   background: var(--backgroud-color);
   cursor: pointer;
   padding: 0;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
 }
+
+.card__icon-button :focus-visible  {
+  border: 2px solid var(--main-color);
+  outline: none;
+} 
 
 .button__text {
   display:flex;
@@ -272,7 +286,7 @@
 }
 
 .sparks {
-  fill: none; /*тут не срабатывает opacity: 1, так как в задании написано "не имеет значение как" оставила fill, так не смогла разобраться почему*/
+  fill: none; /*тут не срабатывает opacity: 1, так как в задании написано "не имеет значение как" оставила fill, так и не смогла разобраться почему*/
 }
 
 .footer {
@@ -287,19 +301,23 @@
   align-items: center;
   justify-content: center;
   border: 2px solid var(--main-color);
-  padding: 10px 20px;
-  margin-top: 27px;
+  padding: 10px 20px 12px;
+  margin-top: 10px;
   margin-bottom: 30px;
   gap: 10px;
   background-color: var(--backgroud-color);
 }
 
-.footer__button svg {
+.footer__button {
+  display: flex;
   width: 28px;
   height: 28px;
 }
 
 .card__save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   color: var(--button-text-color);
   margin-top: 5px;
@@ -308,30 +326,42 @@
 
 /*диалог*/
 
-dialog::backdrop {
+.dialog::backdrop {
   opacity: 75%;
   background: var(--main-color, #000000);
 }
 
 .dialog {
-  max-width: 341px;
-  min-height: 195px;
+  width: 341px;
+  height: 195px;
   background: var(--backgroud-color);
   border: 2px solid var(--main-color);
-
 }
 
 .dialog__block {
   background: var(--backgroud-color);
-  padding-top: 30px;
+  padding: 15px 24px;
 }
 
 .dialog__column {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  gap: 18px;
   color: var(--main-color);
   font-family: var(--font-accent);
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin-bottom: 27px;
+  align-items: center;
+}
+
+.dialog .card__save-button {
+  margin-top: 0;
+}
+
+.dialog__block-text {
+  display: flex;
+  margin: 
 }
 
 .dialog__button {
@@ -339,7 +369,7 @@ dialog::backdrop {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  height: 38px;
   background: var(--backgroud-color);
   border: 2px solid var(--main-color);
   padding: 14px 0;
@@ -347,35 +377,35 @@ dialog::backdrop {
 
 /* Фильтры */
 
-.pic_hand {
+.filter__brightness {
   filter: brightness(100%);
 }
 
-.pic_stone {
+.filter__contrast {
   filter: contrast(70%);
 }
 
-.pic_head {
+.filter__blur {
   filter: blur(0.1rem);
 }
 
-.pic_smile {
-  filter: opacity(0.6);
+.filter__opacity {
+  filter: opacity(0.9);
 }
 
-.pic_hug {
+.filter__grayscale {
   filter: grayscale(0.8);
 }
 
-.pic_tears {
+.filter__saturate {
   filter: saturate(158%);
 } 
 
-.pic_depression {
+.filter__hue {
   filter: hue-rotate(-90deg);
 }
 
-.pic_study {
+.filter__multiple {
   filter: sepia(50%) invert(0.8) contrast(80%);
 }
 
@@ -384,6 +414,7 @@ dialog::backdrop {
   .header {
     max-width: 700px;
     min-height: 368px;
+    padding-top: 135px;
   }
 
   .header__content {
@@ -394,10 +425,15 @@ dialog::backdrop {
     max-width: 700px;
   }
 
+  .pic__images {
+    height: 696px;
+
+  }
+
   .footer-button {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    height: 51px;
     margin-left: 5px;
     padding-left: 10px;
   }
