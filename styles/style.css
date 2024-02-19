@@ -169,7 +169,7 @@
   opacity: 50%;
   text-shadow: 0 0 1px var(--backgroud-color);
   z-index: 1;
-  top: 0; 
+  top: 0;
   right: 0;
 }
 
@@ -184,9 +184,9 @@
 .article__content {
   padding: 0 20px 0 26px;
   font-size: 18px;
-  line-height: 21px; 
+  line-height: 21px;
   padding-top: 25px;
-  padding-bottom: 24px; 
+  padding-bottom: 24px;
   border: 2px solid var(--main-color);
   background: var(--backgroud-color);
 }
@@ -298,12 +298,6 @@
   background-color: var(--backgroud-color);
 }
 
-.footer__button {
-  display: flex;
-  width: 28px;
-  height: 28px;
-}
-
 .card__save-button {
   display: flex;
   align-items: center;
@@ -312,6 +306,8 @@
   color: var(--button-text-color);
   margin-top: 5px;
   mix-blend-mode: difference;
+  width: 28px;
+  height: 28px;
 }
 
 /*диалог*/
@@ -351,7 +347,6 @@
 
 .dialog__block-text {
   display: flex;
-  margin: 
 }
 
 .dialog__button {
@@ -363,6 +358,11 @@
   background: var(--backgroud-color);
   border: 2px solid var(--main-color);
   padding: 14px 0;
+}
+
+.dialog .card__save-button {
+  width: 39px;
+  height: 39px;
 }
 
 /* Фильтры */
